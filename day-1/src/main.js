@@ -44,8 +44,10 @@ const typingData = [
 ];
 
 const cursor = document.createElement("span");
-cursor.classList.add(CURSOR_CLASS);
+cursor.classList.add(CURSOR_CLASS, BLINK);
 cursor.append(SPACE);
+container.appendChild(cursor);
+cursor.after(SPACE);
 
 let idx = 0;
 function start() {
@@ -107,9 +109,8 @@ function erase() {
 
         // force to stop loop
         if (!cols[0].textContent.length) {
-          // append space to the first of column for cursor positioning
-          cols[0].append(SPACE);
-
+          // append space to the first of collum for cursor positioning
+          cursor.after(SPACE);
           // add blink animation to cursor
           cursor.classList.add(BLINK);
           resolve();
@@ -149,6 +150,11 @@ function type(data = typingData[0]) {
     let c = 0;
     let i = 0;
     function loop() {
+      // remove SPACE
+      if (container.childNodes[0].nodeType === 3) {
+        container.childNodes[0].remove();
+      }
+
       setTimeout(() => {
         const row = document.querySelectorAll("." + ROW_CLASS)[r];
         const col = row.querySelectorAll("." + COL_CLASS)[c];
@@ -156,6 +162,7 @@ function type(data = typingData[0]) {
         col.classList.contains(EMPHASIS)
           ? cursor.classList.add(EMPHASIS)
           : cursor.classList.remove(EMPHASIS);
+
         row.appendChild(cursor);
 
         col.append(data[r]["colData"][c][i]);
