@@ -107,7 +107,7 @@ function erase() {
 
         // force to stop loop
         if (!cols[0].textContent.length) {
-          // append space to the first of collum for cursor positioning
+          // append space to the first of column for cursor positioning
           cols[0].append(SPACE);
 
           // add blink animation to cursor

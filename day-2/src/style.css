@@ -1,0 +1,28 @@
+.slow-moving-background {
+  background-image: url(./wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slow-moving-background .container {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.slow-moving-background section {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 500px;
+  background-color: #e2e8f0;
+  color: #334155;
+  font-weight: 700;
+  font-size: 4.5rem;
+  margin: 300px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
